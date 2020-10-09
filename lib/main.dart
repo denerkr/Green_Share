@@ -21,6 +21,7 @@ class ListadeTransferencias extends StatelessWidget {
         ItemTransferencia(Transferencia(200.00, 200.000)),
         ItemTransferencia(Transferencia(300.00, 500.000)),
         ItemTransferencia(Transferencia(400.00, 700.000)),
+        ItemTransferencia(Transferencia(500.00, 900.000)),
       ],
     );
   }
