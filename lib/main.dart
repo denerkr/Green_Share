@@ -15,6 +15,7 @@ class GreenShareApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
+      debugShowCheckedModeBanner: false,
       home: ListaTransferencias(),
     );
   }
