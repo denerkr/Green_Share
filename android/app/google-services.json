@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "789726817078",
+    "firebase_url": "https://projeto-greenshare.firebaseio.com",
+    "project_id": "projeto-greenshare",
+    "storage_bucket": "projeto-greenshare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789726817078:android:a992ce0a062a5c44ea6197",
+        "android_client_info": {
+          "package_name": "com.example.GreenShare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789726817078-jjhfo6ahp9j2fb24nk7s60jb5el54erv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP1ZJjIMLU0Abh3uR-tefrwxXT1uKo94E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789726817078-jjhfo6ahp9j2fb24nk7s60jb5el54erv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
