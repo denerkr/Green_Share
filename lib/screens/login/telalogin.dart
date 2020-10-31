@@ -28,7 +28,7 @@ class TelaLoginState extends State<TelaLogin> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add), onPressed: () {
+        child: Icon(Icons.login), onPressed: () {
         final Future<Login> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
           return ListaTransferencias();
         }));
