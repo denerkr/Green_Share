@@ -1,3 +1,4 @@
+import 'package:GreenShare/screens/login/telalogin.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class GreenShareApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: ListaTransferencias(),
+      home: TelaLogin(),
     );
   }
 }
