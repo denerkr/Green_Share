@@ -1,5 +1,6 @@
 import 'package:GreenShare/models/login.dart';
 import 'package:GreenShare/screens/login/telalogin.dart';
+import 'package:GreenShare/screens/menu/appmenu.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class TelaLoginState extends State<TelaLogin> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.login), onPressed: () {
         final Future<Login> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ListaTransferencias();
+          return Menu();
         }));
         future.then((transferenciaRecebida) {
           Future.delayed(Duration(seconds: 5), (){
