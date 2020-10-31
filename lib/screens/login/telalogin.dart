@@ -20,12 +20,21 @@ class TelaLoginState extends State<TelaLogin> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: ListView.builder(
-        itemCount: widget._login.length,
-        itemBuilder: (context, indice) {
-          final login = widget._login[indice];
-          return ItemLogin(login);
-        },
+      body: Column(
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.alternate_email),
+              title: Text('email'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('senha'),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.login), onPressed: () {
