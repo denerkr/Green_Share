@@ -1,12 +1,12 @@
+import 'package:GreenShare/components/editor.dart';
 import 'package:GreenShare/models/login.dart';
+import 'package:GreenShare/models/transferencia.dart';
 import 'package:GreenShare/screens/login/telalogin.dart';
 import 'package:GreenShare/screens/menu/appmenu.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
 
 class TelaLogin extends StatefulWidget {
-
-  final List<Login> _login = List();
 
   @override
   State<StatefulWidget> createState() {
@@ -15,63 +15,39 @@ class TelaLogin extends StatefulWidget {
 }
 
 class TelaLoginState extends State<TelaLogin> {
+  final TextEditingController _controladorCampoNumeroConta =
+  TextEditingController();
+  final TextEditingController _controladorCampoValor = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.alternate_email),
-              title: Text('email'),
-            ),
+        appBar: AppBar(
+          title: Text('Login'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Editor(
+                controlador: _controladorCampoNumeroConta,
+                rotulo: 'Email',
+                dica: 'exemple@email.com',
+                icone: Icons.alternate_email,
+              ),
+              Editor(
+                  controlador: _controladorCampoValor,
+                  rotulo: 'Senha',
+                  dica: '*****',
+                  icone: Icons.lock),
+              RaisedButton(
+                  child: Text('Logar'),
+                  onPressed: () {
+                    final Future<Transferencia> future = Navigator.push(
+                        context, MaterialPageRoute(builder: (context) {
+                      return Menu();
+                    }));
+                  }),
+            ],
           ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.lock),
-              title: Text('senha'),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.login), onPressed: () {
-        final Future<Login> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Menu();
-        }));
-        future.then((transferenciaRecebida) {
-          Future.delayed(Duration(seconds: 5), (){
-            debugPrint('chegou no then do future');
-            debugPrint('$transferenciaRecebida');
-            if (transferenciaRecebida != null) {
-              setState(() {
-                widget._login.add(transferenciaRecebida);
-              });
-            }
-          });
-        });
-      },
-      ),
-    );
-  }
-}
-
-class ItemLogin extends StatelessWidget {
-  final Login _login;
-
-  ItemLogin(this._login);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(Icons.monetization_on),
-        title: Text(_login.senha.toString()),
-        subtitle: Text(_login.login.toString()),
-      ),
-    );
-  }
-}
+        ));
+  }}

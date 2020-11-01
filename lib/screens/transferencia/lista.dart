@@ -32,7 +32,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
           return FormularioTransferencia();
         }));
         future.then((transferenciaRecebida) {
-          Future.delayed(Duration(seconds: 5), (){
+          Future.delayed(Duration(seconds: 1), (){
             debugPrint('chegou no then do future');
             debugPrint('$transferenciaRecebida');
             if (transferenciaRecebida != null) {
