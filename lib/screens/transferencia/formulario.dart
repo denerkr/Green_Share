@@ -18,7 +18,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Criando Transferência'),
+          title: Text('Formulário de Transferência'),
         ),
         body: SingleChildScrollView(
           child: Column(
