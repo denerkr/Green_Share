@@ -1,27 +1,27 @@
 import 'package:GreenShare/models/transferencia.dart';
-import 'package:GreenShare/screens/login/registro.dart';
+import 'package:GreenShare/screens/login/logincompelto.dart';
 import 'package:GreenShare/screens/menu/appmenu.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class Registro extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => new _LoginPageState();
+  State<StatefulWidget> createState() => new RegistroState();
 }
 
-// Used for controlling whether the user is loggin or creating an account
+// Used for controlling whether the user is login or creating an account
 enum FormType {
-  login,
+  register
 }
 
-class _LoginPageState extends State<LoginPage> {
+class RegistroState extends State<Registro> {
 
   final TextEditingController _emailFilter = new TextEditingController();
   final TextEditingController _passwordFilter = new TextEditingController();
   String _email = "";
   String _password = "";
-  FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
+  FormType _form = FormType.register; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
-  _LoginPageState() {
+  RegistroState() {
     _emailFilter.addListener(_emailListen);
     _passwordFilter.addListener(_passwordListen);
   }
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildBar(BuildContext context) {
     return new AppBar(
-      title: new Text("Login"),
+      title: new Text("Registro"),
       centerTitle: true,
     );
   }
@@ -85,42 +85,35 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
+          ),
+          new Container(
+            child: new TextField(
+              controller: _passwordFilter,
+              decoration: new InputDecoration(
+                  labelText: 'Confirme senha'
+              ),
+              obscureText: true,
+            ),
           )
         ],
       ),
     );
   }
 
-  void _passwordReset () {
-    print("The user wants a password reset request sent to $_email");
-  }
-
   Widget _buildButtons() {
-    if (_form == FormType.login) {
+    if (_form == FormType.register) {
       return new Container(
         child: new Column(
           children: <Widget>[
             new RaisedButton(
-              child: new Text('Login'),
-              onPressed: () {
-                final Future<Transferencia> future = Navigator.push(
-                    context, MaterialPageRoute(builder: (context) {
-                  return Menu();
-                }));
-              }),
-            new FlatButton(
-              child: new Text('Registre-se aqui'),
-              onPressed: () {
-                    final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Registro();
-                }));
-              }),
-            new FlatButton(
-              child: new Text('Esqueceu a senha?'),
-              onPressed: _passwordReset,
-            )
-          ],
+                child: new Text('Crie a conta'),
+                onPressed: () {
+                  final Future<Transferencia> future = Navigator.push(
+                      context, MaterialPageRoute(builder: (context) {
+                    return LoginPage();
+                  }));
+                }),
+            ],
         ),
       );
-    }
-}}
+    }}}
