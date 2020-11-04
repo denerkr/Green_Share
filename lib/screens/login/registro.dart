@@ -17,13 +17,16 @@ class RegistroState extends State<Registro> {
 
   final TextEditingController _emailFilter = new TextEditingController();
   final TextEditingController _passwordFilter = new TextEditingController();
+  final TextEditingController _password2Filter = new TextEditingController();
   String _email = "";
   String _password = "";
+  String _password2 = "";
   FormType _form = FormType.register; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
   RegistroState() {
     _emailFilter.addListener(_emailListen);
     _passwordFilter.addListener(_passwordListen);
+    _password2Filter.addListener(_passwordListen);
   }
 
   void _emailListen() {
@@ -39,6 +42,14 @@ class RegistroState extends State<Registro> {
       _password = "";
     } else {
       _password = _passwordFilter.text;
+    }
+  }
+
+  void _password2Listen() {
+    if (_password2Filter.text.isEmpty) {
+      _password2 = "";
+    } else {
+      _password2 = _password2Filter.text;
     }
   }
 
@@ -88,7 +99,7 @@ class RegistroState extends State<Registro> {
           ),
           new Container(
             child: new TextField(
-              controller: _passwordFilter,
+              controller: _password2Filter,
               decoration: new InputDecoration(
                   labelText: 'Confirme senha'
               ),
