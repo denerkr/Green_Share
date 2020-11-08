@@ -1,11 +1,13 @@
 import 'package:GreenShare/screens/login/logincompelto.dart';
-import 'package:GreenShare/screens/login/telalogin.dart';
-import 'package:GreenShare/screens/transferencia/lista.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 
 void main() => runApp(GreenShareApp());
 
 class GreenShareApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
