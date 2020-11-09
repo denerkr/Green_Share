@@ -47,6 +47,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
     final double numeroConta =
         double.tryParse(_controladorCampoNumeroConta.text);
     final double valor = double.tryParse(_controladorCampoValor.text);
+    // ignore: unrelated_type_equality_checks
     if (numeroConta != Null && valor != Null) {
       final transferenciaCriada = Transferencia(valor, numeroConta);
       Navigator.pop(context, transferenciaCriada);

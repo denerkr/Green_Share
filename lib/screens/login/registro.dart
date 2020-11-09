@@ -1,6 +1,5 @@
 import 'package:GreenShare/models/transferencia.dart';
 import 'package:GreenShare/screens/login/logincompelto.dart';
-import 'package:GreenShare/screens/menu/appmenu.dart';
 import 'package:flutter/material.dart';
 
 class Registro extends StatefulWidget {
@@ -26,7 +25,7 @@ class RegistroState extends State<Registro> {
   RegistroState() {
     _emailFilter.addListener(_emailListen);
     _passwordFilter.addListener(_passwordListen);
-    _password2Filter.addListener(_passwordListen);
+    _password2Filter.addListener(_password2Listen);
   }
 
   void _emailListen() {
@@ -111,6 +110,7 @@ class RegistroState extends State<Registro> {
     );
   }
 
+  // ignore: missing_return
   Widget _buildButtons() {
     if (_form == FormType.register) {
       return new Container(

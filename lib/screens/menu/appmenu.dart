@@ -1,7 +1,4 @@
-import 'package:GreenShare/components/editor.dart';
-import 'package:GreenShare/models/login.dart';
 import 'package:GreenShare/models/transferencia.dart';
-import 'package:GreenShare/screens/login/telalogin.dart';
 import 'package:GreenShare/screens/transferencia/formulario.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';

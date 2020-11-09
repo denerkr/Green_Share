@@ -95,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
     print("The user wants a password reset request sent to $_email");
   }
 
+  // ignore: missing_return
   Widget _buildButtons() {
     if (_form == FormType.login) {
       return new Container(
