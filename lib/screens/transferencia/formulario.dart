@@ -1,5 +1,6 @@
 import 'package:GreenShare/components/editor.dart';
 import 'package:GreenShare/models/transferencia.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
@@ -37,7 +38,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                   icone: Icons.monetization_on),
               RaisedButton(
                 child: Text('Confirmar'),
-                onPressed: () => createData(),
+                onPressed: () => getsenha(),
               ),
             ],
           ),
@@ -88,4 +89,16 @@ void createData(){
     'name': 'Naveen',
     'description': 'Associate Software Engineer'
   });
+}
+
+void readData(){
+  databaseReference.child("usuarios").child("residencia6").child("cadastro").child("-MLuCXL5qbtHL-Ngbm1Z").once().then((DataSnapshot usuarios) {
+      print('Data : ${usuarios.value}');
+  });
+}
+
+Future<String> getsenha() async {
+  String result = (await FirebaseDatabase.instance.reference().child("usuarios/residencia6/cadastro/-MLuCXL5qbtHL-Ngbm1Z/senha").once()).value;
+  print(result);
+  return result;
 }

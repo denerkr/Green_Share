@@ -1,6 +1,7 @@
 import 'package:GreenShare/models/transferencia.dart';
 import 'package:GreenShare/screens/login/registro.dart';
 import 'package:GreenShare/screens/menu/appmenu.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -95,6 +96,15 @@ class _LoginPageState extends State<LoginPage> {
     print("The user wants a password reset request sent to $_email");
   }
 
+  void getSenha() async {
+    String result = (await FirebaseDatabase.instance.reference().child("usuarios/residencia6/cadastro/-MLuCXL5qbtHL-Ngbm1Z/senha").once()).value;
+    if(result == _password && result == _email) {
+      final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Menu();
+      }));
+    }
+  }
+
   // ignore: missing_return
   Widget _buildButtons() {
     if (_form == FormType.login) {
@@ -103,12 +113,8 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             new RaisedButton(
               child: new Text('Login'),
-              onPressed: () {
-                final Future<Transferencia> future = Navigator.push(
-                    context, MaterialPageRoute(builder: (context) {
-                  return Menu();
-                }));
-              }),
+              onPressed: () => getSenha(),
+              ),
             new FlatButton(
               child: new Text('Registre-se aqui'),
               onPressed: () {
@@ -125,3 +131,4 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
 }}
+
