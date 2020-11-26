@@ -28,22 +28,30 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
             children: [
               Editor(
                 controlador: _controladorCampoNumeroConta,
-                rotulo: 'Numero Conta',
-                dica: '0000',
+                rotulo: 'Multiplicador maximo para compra',
+                dica: '1.5',
               ),
               Editor(
                   controlador: _controladorCampoValor,
-                  rotulo: 'Valor',
-                  dica: '0.00',
+                  rotulo: 'Mutiplicador minimo para venda',
+                  dica: '1.5',
                   icone: Icons.monetization_on),
               RaisedButton(
                 child: Text('Confirmar'),
-                onPressed: () => getsenha(),
+                onPressed: () => attDados(context),
               ),
             ],
           ),
         ));
   }
+
+void attDados(BuildContext context){
+  final double numeroConta = double.tryParse(_controladorCampoNumeroConta.text);
+  final double valor = double.tryParse(_controladorCampoValor.text);
+    databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Multiplicador maximo para compra': numeroConta});
+    databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Mutiplicador minimo para venda': valor});
+}
+
 
   void _criaTransferencia(BuildContext context) {
     ///debugPrint('clicou no botão confirmar');
