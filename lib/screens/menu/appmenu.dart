@@ -48,9 +48,9 @@ class MenuState extends State<Menu> {
   }}
 
 void modoManual() async {
-    databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Modo': '1'});
+    databaseReference.child('usuarios/residencia8/configuracoes').update({'Modo': '1'});
   }
 
 void modoAuto() async {
-  databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Modo': '0'});
+  databaseReference.child('usuarios/residencia8/configuracoes').update({'Modo': '0'});
 }

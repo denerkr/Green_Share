@@ -48,8 +48,8 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
 void attDados(BuildContext context){
   final double numeroConta = double.tryParse(_controladorCampoNumeroConta.text);
   final double valor = double.tryParse(_controladorCampoValor.text);
-    databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Multiplicador maximo para compra': numeroConta});
-    databaseReference.child('usuarios/residencia6/configuracoes/-MLuCXkNOYahXttBXDQf').update({'Mutiplicador minimo para venda': valor});
+    databaseReference.child('usuarios/residencia8/configuracoes').update({'Multiplicador maximo para compra': numeroConta});
+    databaseReference.child('usuarios/residencia8/configuracoes').update({'Mutiplicador minimo para venda': valor});
 }
 
 
