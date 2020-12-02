@@ -2,10 +2,16 @@ import 'package:GreenShare/models/transferencia.dart';
 import 'package:GreenShare/screens/transferencia/formulario.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
+import 'package:GreenShare/screens/menu/homepagecharts.dart';
+import 'package:GreenShare/screens/login/logincompelto.dart';
 
 import '../../main.dart';
 
 class Menu extends StatefulWidget {
+  int casa;
+
+  Menu({this.casa});
+
   @override
   State<StatefulWidget> createState() {
     return MenuState();
@@ -42,15 +48,25 @@ class MenuState extends State<Menu> {
                   child: Text('Modo Automatico'),
                   onPressed: () => modoAuto(),
               ),
+              RaisedButton(
+                  child: Text('Graficos'),
+                  onPressed: () {
+                    final Future<Transferencia> future = Navigator.push(
+                        context, MaterialPageRoute(builder: (context) {
+                      return HomePage();
+                    }));
+                  }),
             ],
           ),
         ));
   }}
 
 void modoManual() async {
-    databaseReference.child('usuarios/residencia8/configuracoes').update({'Modo': '1'});
+  debugPrint('chegou no modomanual:');
+    databaseReference.child('usuarios/residencia7/configuracoes').update({'Modo': '1'});
   }
 
 void modoAuto() async {
-  databaseReference.child('usuarios/residencia8/configuracoes').update({'Modo': '0'});
+  debugPrint('chegou no modoautomatico:');
+  databaseReference.child('usuarios/residencia7/configuracoes').update({'Modo': '0'});
 }
