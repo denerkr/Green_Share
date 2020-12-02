@@ -97,8 +97,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void getSenha() async {
-    String senha = (await FirebaseDatabase.instance.reference().child("usuarios/residencia8/cadastro/senha").once()).value;
-    String login = (await FirebaseDatabase.instance.reference().child("usuarios/residencia8/cadastro/e-mail").once()).value;
+    int i = 8;
+    String pathsenha = "usuarios/residencia$i/cadastro/senha";
+    String pathlogin = "usuarios/residencia$i/cadastro/e-mail";
+    String senha = (await FirebaseDatabase.instance.reference().child(pathsenha).once()).value;
+    String login = (await FirebaseDatabase.instance.reference().child(pathlogin).once()).value;
     if(senha == _password && login == _email) {
       final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
         return Menu();
