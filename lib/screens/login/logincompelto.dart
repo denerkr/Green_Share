@@ -15,12 +15,12 @@ enum FormType {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final TextEditingController _emailFilter = new TextEditingController();
   final TextEditingController _passwordFilter = new TextEditingController();
   String _email = "";
   String _password = "";
-  FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
+  FormType _form = FormType
+      .login; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
   _LoginPageState() {
     _emailFilter.addListener(_emailListen);
@@ -73,17 +73,13 @@ class _LoginPageState extends State<LoginPage> {
           new Container(
             child: new TextField(
               controller: _emailFilter,
-              decoration: new InputDecoration(
-                  labelText: 'Email'
-              ),
+              decoration: new InputDecoration(labelText: 'Email'),
             ),
           ),
           new Container(
             child: new TextField(
               controller: _passwordFilter,
-              decoration: new InputDecoration(
-                  labelText: 'Senha'
-              ),
+              decoration: new InputDecoration(labelText: 'Senha'),
               obscureText: true,
             ),
           )
@@ -92,20 +88,26 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _passwordReset () {
+  void _passwordReset() {
     print("The user wants a password reset request sent to $_email");
   }
 
   void getSenha() async {
-    int i = 8;
-    String pathsenha = "usuarios/residencia$i/cadastro/senha";
-    String pathlogin = "usuarios/residencia$i/cadastro/e-mail";
-    String senha = (await FirebaseDatabase.instance.reference().child(pathsenha).once()).value;
-    String login = (await FirebaseDatabase.instance.reference().child(pathlogin).once()).value;
-    if(senha == _password && login == _email) {
-      final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Menu();
-      }));
+    for (var i = 0; i <= 10; i++) {
+      String pathsenha = "usuarios/residencia$i/cadastro/senha";
+      String pathlogin = "usuarios/residencia$i/cadastro/e-mail";
+      String senha =
+          (await FirebaseDatabase.instance.reference().child(pathsenha).once())
+              .value;
+      String login =
+          (await FirebaseDatabase.instance.reference().child(pathlogin).once())
+              .value;
+      if (senha == _password && login == _email) {
+        final Future<Transferencia> future =
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return Menu();
+        }));
+      }
     }
   }
 
@@ -118,14 +120,15 @@ class _LoginPageState extends State<LoginPage> {
             new RaisedButton(
               child: new Text('Login'),
               onPressed: () => getSenha(),
-              ),
+            ),
             new FlatButton(
-              child: new Text('Registre-se aqui'),
-              onPressed: () {
-                    final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Registro();
-                }));
-              }),
+                child: new Text('Registre-se aqui'),
+                onPressed: () {
+                  final Future<Transferencia> future = Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return Registro();
+                  }));
+                }),
             new FlatButton(
               child: new Text('Esqueceu a senha?'),
               onPressed: _passwordReset,
@@ -134,5 +137,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
-}}
-
+  }
+}
