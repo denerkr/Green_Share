@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void getSenha() async {
-    int casa = (await FirebaseDatabase.instance.reference().child("n/n").once()).value;
+    int casa = (await FirebaseDatabase.instance.reference().child("totalUsuarios").once()).value;
     for (var i = 0; i <= casa; i++) {
       String pathsenha = "usuarios/residencia$i/cadastro/senha";
       String pathlogin = "usuarios/residencia$i/cadastro/email";
