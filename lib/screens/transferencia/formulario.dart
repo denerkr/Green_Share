@@ -6,16 +6,23 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 
 class FormularioTransferencia extends StatefulWidget {
+  final int usuario;
+
+  const FormularioTransferencia({Key key, this.usuario}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return FormularioTransferenciaState();
+    return FormularioTransferenciaState(usuario);
   }
 }
 
 class FormularioTransferenciaState extends State<FormularioTransferencia> {
-  final TextEditingController _controladorCampoNumeroConta =
-      TextEditingController();
+  final int usuario;
+
+  final TextEditingController _controladorCampoNumeroConta = TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
+
+  FormularioTransferenciaState(this.usuario);
 
   @override
   Widget build(BuildContext context) {
@@ -38,38 +45,17 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                   icone: Icons.monetization_on),
               RaisedButton(
                 child: Text('Confirmar'),
-                onPressed: () => attDados(context),
+                onPressed: () => attDados(context, usuario),
               ),
             ],
           ),
         ));
   }
 
-void attDados(BuildContext context){
-  final double numeroConta = double.tryParse(_controladorCampoNumeroConta.text);
-  final double valor = double.tryParse(_controladorCampoValor.text);
-    databaseReference.child('usuarios/residencia8/configuracoes').update({'Multiplicador maximo para compra': numeroConta});
-    databaseReference.child('usuarios/residencia8/configuracoes').update({'Mutiplicador minimo para venda': valor});
-}
-
-
-  void _criaTransferencia(BuildContext context) {
-    ///debugPrint('clicou no botão confirmar');
-    final double numeroConta =
-        double.tryParse(_controladorCampoNumeroConta.text);
+  void attDados(BuildContext context, usuario) {
+    final double numeroConta = double.tryParse(_controladorCampoNumeroConta.text);
     final double valor = double.tryParse(_controladorCampoValor.text);
-    // ignore: unrelated_type_equality_checks
-    if (numeroConta != Null && valor != Null) {
-      final transferenciaCriada = Transferencia(valor, numeroConta);
-      Navigator.pop(context, transferenciaCriada);
-      ///debugPrint('criando Transferência');
-      ///debugPrint('$transferenciaCriada');
-    }
+    databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'MultiplicadorMaximoParaCompra': numeroConta});
+    databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'MutiplicadorMinimoParaVenda': valor});
   }
-}
-
-Future<String> getsenha() async {
-  String result = (await FirebaseDatabase.instance.reference().child("usuarios/residencia6/cadastro/-MLuCXL5qbtHL-Ngbm1Z/senha").once()).value;
-  print(result);
-  return result;
 }

@@ -94,24 +94,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void getSenha() async {
-    for (var casa = 0; casa <= 10; casa++) {
-      String pathsenha = "usuarios/residencia$casa/cadastro/senha";
-      String pathlogin = "usuarios/residencia$casa/cadastro/email";
-      String senha =
-          (await FirebaseDatabase.instance.reference().child(pathsenha).once())
-              .value;
-      String login =
-          (await FirebaseDatabase.instance.reference().child(pathlogin).once())
-              .value;
+    int casa = (await FirebaseDatabase.instance.reference().child("n/n").once()).value;
+    for (var i = 0; i <= casa; i++) {
+      String pathsenha = "usuarios/residencia$i/cadastro/senha";
+      String pathlogin = "usuarios/residencia$i/cadastro/email";
+      String senha = (await FirebaseDatabase.instance.reference().child(pathsenha).once()).value;
+      String login = (await FirebaseDatabase.instance.reference().child(pathlogin).once()).value;
       if (senha == _password && login == _email) {
-        setState(() {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Menu(casa: casa)));
-        });
-        final Future<Transferencia> future =
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              debugPrint('chegou no getsenha: $casa');
-          return Menu();
-        }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Menu(usuario: i,)
+        ));
       }
     }
   }
@@ -126,18 +117,17 @@ class _LoginPageState extends State<LoginPage> {
               child: new Text('Login'),
               onPressed: () => getSenha(),
             ),
-            //new FlatButton(
-            //    child: new Text('Registre-se aqui'),
-             //   onPressed: () {
-             //     final Future<Transferencia> future = Navigator.push(context,
-              //        MaterialPageRoute(builder: (context) {
-              //      return Registro();
-              //    }));
-               // }),
-          //  new FlatButton(
-           //   child: new Text('Esqueceu a senha?'),
-           //   onPressed: _passwordReset,
-           // )
+            new FlatButton(
+               child: new Text('Registre-se aqui'),
+              onPressed: () {
+                 final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Registro();
+                }));
+             }),
+              new FlatButton(
+               child: new Text('Esqueceu a senha?'),
+               onPressed: _passwordReset,
+             )
           ],
         ),
       );

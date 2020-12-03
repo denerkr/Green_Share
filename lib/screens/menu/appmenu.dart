@@ -8,20 +8,24 @@ import 'package:GreenShare/screens/login/logincompelto.dart';
 import '../../main.dart';
 
 class Menu extends StatefulWidget {
-  int casa;
+  final int usuario;
 
-  Menu({this.casa});
+  const Menu({Key key, this.usuario}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return MenuState();
+    return MenuState(usuario);
   }
 }
 
 class MenuState extends State<Menu> {
-  final TextEditingController _controladorCampoNumeroConta =
-  TextEditingController();
+  final TextEditingController _controladorCampoNumeroConta = TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
+
+  final int usuario;
+
+  MenuState(this.usuario);
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,24 +39,21 @@ class MenuState extends State<Menu> {
               RaisedButton(
                   child: Text('Alterar valor de compra e venda'),
                   onPressed: () {
-                    final Future<Transferencia> future = Navigator.push(
-                        context, MaterialPageRoute(builder: (context) {
-                      return FormularioTransferencia();
-                    }));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => FormularioTransferencia(usuario: usuario,)
+                    ));
                   }),
               RaisedButton(
                   child: Text('Modo Manual'),
-                  onPressed: () => modoManual()
+                  onPressed: () => modoManual(usuario)
               ),
               RaisedButton(
                   child: Text('Modo Automatico'),
-                  onPressed: () => modoAuto(),
+                  onPressed: () => modoAuto(usuario),
               ),
               RaisedButton(
                   child: Text('Graficos'),
                   onPressed: () {
-                    final Future<Transferencia> future = Navigator.push(
-                        context, MaterialPageRoute(builder: (context) {
+                    final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
                       return HomePage();
                     }));
                   }),
@@ -61,12 +62,10 @@ class MenuState extends State<Menu> {
         ));
   }}
 
-void modoManual() async {
-  debugPrint('chegou no modomanual:');
-    databaseReference.child('usuarios/residencia7/configuracoes').update({'Modo': '1'});
+void modoManual(usuario) async {
+    databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': '1'});
   }
 
-void modoAuto() async {
-  debugPrint('chegou no modoautomatico:');
-  databaseReference.child('usuarios/residencia7/configuracoes').update({'Modo': '0'});
+void modoAuto(usuario) async {
+  databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': '0'});
 }
