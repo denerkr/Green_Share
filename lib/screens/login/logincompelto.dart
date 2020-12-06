@@ -104,6 +104,8 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.push(context, MaterialPageRoute(builder: (context) => Menu(usuario: i,)
         ));
       }
+      Text(
+        'Carregando...',style: TextStyle(fontSize: 8.0,fontWeight: FontWeight.bold),);
     }
   }
 
