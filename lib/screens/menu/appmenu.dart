@@ -53,9 +53,8 @@ class MenuState extends State<Menu> {
               RaisedButton(
                   child: Text('Graficos'),
                   onPressed: () {
-                    final Future<Transferencia> future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return HomePage();
-                    }));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(usuario: usuario,)
+                    ));
                   }),
             ],
           ),
@@ -63,9 +62,9 @@ class MenuState extends State<Menu> {
   }}
 
 void modoManual(usuario) async {
-    databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': '1'});
+    databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': 'Manual'});
   }
 
 void modoAuto(usuario) async {
-  databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': '0'});
+  databaseReference.child('usuarios/residencia$usuario/configuracoes').update({'Modo': 'Automatico'});
 }

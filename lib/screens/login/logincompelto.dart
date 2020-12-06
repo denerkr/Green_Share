@@ -91,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _passwordReset() {
     print("The user wants a password reset request sent to $_email");
+    Text("The user wants a password reset request sent to $_email");
   }
 
   void getSenha() async {
