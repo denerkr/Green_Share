@@ -251,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                                 new charts.ChartTitle('Tempo (dias)',
                                     behaviorPosition: charts.BehaviorPosition.bottom,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
-                                new charts.ChartTitle('Energia gerada e consumida em (kW/h)',
+                                new charts.ChartTitle('Energia gerada e consumida em (kWh)',
                                     behaviorPosition: charts.BehaviorPosition.start,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
                               ]
@@ -281,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                                 new charts.ChartTitle('Tempo (dias)',
                                     behaviorPosition: charts.BehaviorPosition.bottom,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
-                                new charts.ChartTitle('Energia comprada e vendida em (kW/h)',
+                                new charts.ChartTitle('Energia comprada e vendida em (kWh)',
                                     behaviorPosition: charts.BehaviorPosition.start,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
                               ]
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                                 new charts.ChartTitle('Intervalo de tempo (2h)',
                                     behaviorPosition: charts.BehaviorPosition.bottom,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
-                                new charts.ChartTitle('Energia gerada e consumida em (kW/h)',
+                                new charts.ChartTitle('Energia gerada e consumida em (kWh)',
                                     behaviorPosition: charts.BehaviorPosition.start,
                                     titleOutsideJustification:charts.OutsideJustification.middleDrawArea),
                               ]
