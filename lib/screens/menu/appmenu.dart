@@ -1,9 +1,9 @@
 import 'package:GreenShare/models/transferencia.dart';
-import 'package:GreenShare/screens/menu/Moni.dart';
 import 'package:GreenShare/screens/transferencia/formulario.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
 import 'package:GreenShare/screens/menu/homepagecharts.dart';
+import 'package:GreenShare/screens/menu/Moni.dart';
 import 'package:GreenShare/screens/login/logincompelto.dart';
 
 import '../../main.dart';
@@ -38,27 +38,27 @@ class MenuState extends State<Menu> {
           child: Column(
             children: [
               RaisedButton(
-                  child: Text('Alterar valor de compra e venda'),
+                  child: Text('Alterar valor de compra e venda',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => FormularioTransferencia(usuario: usuario,)
                     ));
                   }),
               RaisedButton(
-                  child: Text('Modo Manual'),
+                  child: Text('Modo Manual',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () => modoManual(usuario)
               ),
               RaisedButton(
-                  child: Text('Modo Automático'),
+                  child: Text('Modo Automatico',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () => modoAuto(usuario),
               ),
               RaisedButton(
-                  child: Text('Histórico'),
+                  child: Text('Histórico',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(usuario: usuario,)
                     ));
                   }),
               RaisedButton(
-                  child: Text('Monitoramento'),
+                  child: Text('Monitoramento',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => Moni(usuario: usuario,)
                     ));

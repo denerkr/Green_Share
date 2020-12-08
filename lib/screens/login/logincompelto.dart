@@ -97,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
   void getSenha() async {
     int casa = (await FirebaseDatabase.instance.reference().child("totalUsuarios").once()).value;
     for (var i = 0; i <= casa; i++) {
+      Text('Carregando...',style: TextStyle(fontSize: 8.0,fontWeight: FontWeight.bold),);
       String pathsenha = "usuarios/residencia$i/cadastro/senha";
       String pathlogin = "usuarios/residencia$i/cadastro/email";
       String senha = (await FirebaseDatabase.instance.reference().child(pathsenha).once()).value;
@@ -105,8 +106,7 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.push(context, MaterialPageRoute(builder: (context) => Menu(usuario: i,)
         ));
       }
-      Text(
-        'Carregando...',style: TextStyle(fontSize: 8.0,fontWeight: FontWeight.bold),);
+
     }
   }
 

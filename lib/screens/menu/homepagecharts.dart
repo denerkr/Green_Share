@@ -18,9 +18,7 @@ class _HomePageState extends State<HomePage> {
   _HomePageState(this.usuario);
 
   _generateData() async{
-    print("chegou no grafico:$usuario");
     num v1 = (await FirebaseDatabase.instance.reference().child("usuarios/residencia$usuario/historico/acumulado/geracao/dia1").once()).value;
-    print("v1:$v1");
     num v2 = (await FirebaseDatabase.instance.reference().child("usuarios/residencia$usuario/historico/acumulado/geracao/dia2").once()).value;
     num v3 = (await FirebaseDatabase.instance.reference().child("usuarios/residencia$usuario/historico/acumulado/geracao/dia3").once()).value;
     num v4 = (await FirebaseDatabase.instance.reference().child("usuarios/residencia$usuario/historico/acumulado/geracao/dia4").once()).value;
@@ -228,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                 Tab(icon: Icon(FontAwesomeIcons.chartLine)),
               ],
             ),
-            title: Text('Gráficos'),
+            title: Text('Histórico'),
           ),
           body: TabBarView(
             children: [

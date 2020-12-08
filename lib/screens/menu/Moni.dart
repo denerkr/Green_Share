@@ -51,7 +51,7 @@ class MoniState extends State<Moni> {
           child: Column(
             children: [
               RaisedButton(
-                  child: Text('Buscar dados'),
+                  child: Text('Buscar dados',style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold),),
                   onPressed: () => textReturn("usuario")
               ),
               Text("Bateria: $_sampleString kWh"),
