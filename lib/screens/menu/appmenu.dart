@@ -1,4 +1,5 @@
 import 'package:GreenShare/models/transferencia.dart';
+import 'package:GreenShare/screens/menu/Moni.dart';
 import 'package:GreenShare/screens/transferencia/formulario.dart';
 import 'package:GreenShare/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class MenuState extends State<Menu> {
       appBar: AppBar(
         title: Text('Menu'),
       ),
-        body: SingleChildScrollView(
+        body: Center(
           child: Column(
             children: [
               RaisedButton(
@@ -47,13 +48,19 @@ class MenuState extends State<Menu> {
                   onPressed: () => modoManual(usuario)
               ),
               RaisedButton(
-                  child: Text('Modo Automatico'),
+                  child: Text('Modo Automático'),
                   onPressed: () => modoAuto(usuario),
               ),
               RaisedButton(
-                  child: Text('Graficos'),
+                  child: Text('Histórico'),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(usuario: usuario,)
+                    ));
+                  }),
+              RaisedButton(
+                  child: Text('Monitoramento'),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Moni(usuario: usuario,)
                     ));
                   }),
             ],

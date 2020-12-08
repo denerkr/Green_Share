@@ -119,10 +119,8 @@ class RegistroState extends State<Registro> {
             new RaisedButton(
                 child: new Text('Crie a conta'),
                 onPressed: () {
-                  final Future<Transferencia> future = Navigator.push(
-                      context, MaterialPageRoute(builder: (context) {
-                    return LoginPage();
-                  }));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()
+                  ));
                 }),
             ],
         ),
